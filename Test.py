@@ -1,5 +1,6 @@
 from data_process.data_process import *
-
+from user_feature import *
+from evaluate import *
 #train_data = read_train_data()
 
 # print(train_data.shape)
@@ -26,18 +27,22 @@ from data_process.data_process import *
 # print(train_data['like_count'].mode())
 
 #用户数据分析
-predict_data = read_predict_data()
-print(predict_data.shape)
+# predict_data = read_predict_data()
+# print(predict_data.shape)
 
 #train_user_data = train_data['uid']
 
-predict_user_data = predict_data['uid']
-print("预测用户")
-print(predict_user_data.drop_duplicates().count())
+# predict_user_data = predict_data['uid']
+# print("预测用户")
+# print(predict_user_data.drop_duplicates().count())
 
 #train_user_data.d
 
+train_data = read_train_data()
+# user_max_min_forward(train_data)
+# user_max_min_comment(train_data)
+# user_max_min_like(train_data)
 
-
-
+uid_weibo_dict = uid_weibo_info(train_data)
+user_forward_predict,user_comment_predict,user_like_predict = uid_predict_f_c_l(uid_weibo_dict)
 
